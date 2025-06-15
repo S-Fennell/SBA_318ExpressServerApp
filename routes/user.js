@@ -1,9 +1,8 @@
 //This file for organizing my routes
 import express from 'express';
-
 const router = express.Router();
 
-const users = [//thisis jsut a test array
+const users = [//this is jsut a test array
     {
         firstName: "Captain",
         lastName: "America",
@@ -22,20 +21,25 @@ router.get('/', (req, res)=>{
 
 router.post('/', (req, res)=>{
     console.log(`West-Side`);
-    
     //console.log(req.body);
     const user = req.body//This is where my post is being stored. I can push my post into the array below
-    users.push(user);
+    users.push(user);//This is to add posts/objects/users to my array.
 
-    res.send(`Hey ${user.firstName}${user.lastName}! Where is the next fight for freedom?`);
+    res.send(`Hey ${user.firstName}${user.lastName}! Where is the next fight for freedom?`);//testing post requests and variables from user
 });
 
-router.get('/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{// I want to access users
     console.log(req.params);
     const id = req.params;
+    res.send(`Your user is ` + id)//don't know why this is not working as expected
+})
 
-    
-    res.send(req.params)
+router.put('/:id', (req, res)=>{// I want to access users
+    res.send(`Your new user is ` + id)//don't know why this is not working as expected
+})
+
+router.delete('/:id', (req, res)=>{// I want to access users
+    res.send(`Delete user of id ` + id)//don't know why this is not working as expected
 })
 
 
